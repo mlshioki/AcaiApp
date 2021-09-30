@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/drawable/email_icon.xml" value="0.3828125" />
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/drawable/rounded_corner_view.xml" value="0.3828125" />
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/drawable/senha_icon.xml" value="0.3828125" />
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/layout/activity_criar_conta.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/layout/activity_esqueceu_senha.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/layout/activity_splash.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.25" />
       </map>

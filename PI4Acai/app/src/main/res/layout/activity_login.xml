@@ -18,6 +18,7 @@
         android:textAlignment="center"
         android:textColor="#ECBE0C"
         android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,11 +36,14 @@
         app:layout_constraintTop_toBottomOf="@+id/loginTextView">
 
         <EditText
+            android:drawableLeft="@drawable/email_icon"
             android:id="@+id/editEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
             android:layout_weight="1"
+            android:background="@drawable/rounded_corner_view"
             android:ems="10"
+            android:padding="10dp"
             android:hint="E-mail"
             android:inputType="textWebEmailAddress|textEmailSubject" />
     </LinearLayout>
@@ -58,11 +62,16 @@
 
         <EditText
             android:id="@+id/editSenha"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
             android:layout_weight="1"
+            android:background="@drawable/rounded_corner_view"
+            android:drawableLeft="@drawable/senha_icon"
+            android:drawableRight="@drawable/olharsenha_icon"
+
             android:ems="10"
             android:hint="Senha"
+            android:padding="10dp"
             android:inputType="textPersonName" />
     </LinearLayout>
 
@@ -76,6 +85,7 @@
         android:text="Esqueci minha senha"
         android:textAlignment="center"
         android:textColor="#ECBE0C"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
@@ -104,6 +114,7 @@
         android:text="Não tem conta? Cadastre-se"
         android:textAlignment="center"
         android:textColor="#ECBE0C"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonEntrar" />
