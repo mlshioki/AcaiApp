@@ -34,7 +34,6 @@
         android:background="@drawable/rounded_corner_view"
         android:ems="10"
         android:hint="Nome"
-        android:hintTextColor="#757575"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:padding="10dp"
