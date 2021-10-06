@@ -3,15 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/carrinho.xml" value="0.3572916666666667" />
-        <entry key="app/src/main/res/drawable/home.xml" value="0.3572916666666667" />
-        <entry key="app/src/main/res/drawable/menu.xml" value="0.3572916666666667" />
-        <entry key="app/src/main/res/drawable/perfil.xml" value="0.3572916666666667" />
-        <entry key="app/src/main/res/layout/activity_bottom_navigation.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/activity_criar_conta.xml" value="0.25" />
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3828125" />
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/drawable/email_icon.xml" value="0.3828125" />
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/drawable/rounded_corner_view.xml" value="0.3828125" />
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/drawable/senha_icon.xml" value="0.3828125" />
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/layout/activity_bottom_navigation.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/layout/activity_categorias.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/layout/activity_criar_conta.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/layout/activity_dados_cadastrais.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/layout/activity_esqueceu_senha.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/layout/activity_splash.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/layout/fragment_alterar_dados.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/layout/fragment_dados_cadastrais.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/layout/fragment_k.xml" value="0.20520833333333333" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.25" />
-        <entry key="app/src/main/res/menu/bottomnav.xml" value="0.3411458333333333" />
       </map>
     </option>
   </component>
