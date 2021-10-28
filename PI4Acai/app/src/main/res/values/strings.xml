@@ -2,4 +2,7 @@
     <string name="app_name">PI4Acai</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_place_holder">title_place_holder</string>
+    <string name="cover">cover</string>
+    <string name="price_place_holder">price_place_holder</string>
 </resources>

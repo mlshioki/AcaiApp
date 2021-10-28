@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d84963f6-2220-4f0b-a68e-2e097ef5ef5a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/PI4Acai/app/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PI4Acai/app/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PI4Acai/app/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PI4Acai/app/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PI4Acai/app/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PI4Acai/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PI4Acai/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PI4Acai/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/PI4Acai/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PI4Acai/app/src/main/java/br/senac/pi4acai/AlterarDadosFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/PI4Acai/app/src/main/java/br/senac/pi4acai/AlterarDadosFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PI4Acai/app/src/main/java/br/senac/pi4acai/BottomNavigationActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/PI4Acai/app/src/main/java/br/senac/pi4acai/BottomNavigationActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PI4Acai/app/src/main/res/layout/activity_bottom_navigation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PI4Acai/app/src/main/res/layout/activity_bottom_navigation.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PI4Acai/app/src/main/res/layout/fragment_alterar_dados.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PI4Acai/app/src/main/res/layout/fragment_alterar_dados.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
