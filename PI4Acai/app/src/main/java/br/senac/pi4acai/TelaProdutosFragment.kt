@@ -3,11 +3,12 @@ package br.senac.pi4acai
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import br.senac.pi4acai.databinding.CardItemBinding
-import br.senac.pi4acai.databinding.FragmentHomeBinding
+import br.senac.pi4acai.databinding.CardProdutosItemBinding
+import br.senac.pi4acai.databinding.FragmentTelaProdutosBinding
 import br.senac.pi4acai.models.Produto
 import br.senac.pi4acai.services.ProdutoService
 import com.google.android.material.snackbar.Snackbar
@@ -17,15 +18,13 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
-
-    lateinit var bind: FragmentHomeBinding
-
+class TelaProdutosFragment : Fragment() {
+    lateinit var bind: FragmentTelaProdutosBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
 
-        bind = FragmentHomeBinding.inflate(inflater)
+        bind = FragmentTelaProdutosBinding.inflate(inflater)
 
         atualizarProdutos()
 
@@ -33,8 +32,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     fun atualizarProdutos(){
-        //Obter instância do Retrofit
         val retrofit = Retrofit.Builder()
+            //porta do simulador: 10.0.2.2
             .baseUrl("http://10.0.2.2:8000")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -43,20 +42,20 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         val call = service.listar()
 
-        val callback = object : Callback<List<Produto>>{
+        val callback = object : Callback<List<Produto>> {
             override fun onResponse(call: Call<List<Produto>>, response: Response<List<Produto>>) {
                 if(response.isSuccessful){
-                  val listaProdutos = response.body()
+                    val listaProdutos = response.body()
                     atualizarIU(listaProdutos)
                 } else{
-                    Snackbar.make(bind.container1, "Não é possível atualizar produtos", Snackbar.LENGTH_LONG).show()
+                    Snackbar.make(bind.containerProdutos, "Não é possível atualizar produtos", Snackbar.LENGTH_LONG).show()
 
                     Log.e("ERROR", response.errorBody().toString())
                 }
             }
 
             override fun onFailure(call: Call<List<Produto>>, t: Throwable) {
-                Snackbar.make(bind.container1, "Não é possível se conectar ao servidor", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(bind.containerProdutos, "Não é possível se conectar ao servidor", Snackbar.LENGTH_LONG).show()
 
                 Log.e("ERROR", "Falha ao executar serviço", t)
             }
@@ -66,20 +65,20 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     fun atualizarIU(lista: List<Produto>?){
-        bind.container1.removeAllViews()
+        bind.containerProdutos.removeAllViews()
 
         lista?.forEach{
-            val cardBinding = CardItemBinding.inflate(layoutInflater)
+            val cardBinding = CardProdutosItemBinding.inflate(layoutInflater)
 
-            cardBinding.editAcaiTitulo.text = it.nome
-            cardBinding.editAcaiPreco.text = it.preco.toString()
+            cardBinding.editProdNome.text = it.nome
+            cardBinding.editProdPreco.text = it.preco.toString()
 
-            bind.container1.addView(cardBinding.root)
+            bind.containerProdutos.addView(cardBinding.root)
         }
     }
 
     companion object {
         @JvmStatic
-        fun newInstance() = HomeFragment()
+        fun newInstance() = TelaProdutosFragment()
     }
 }

@@ -7,24 +7,24 @@ import retrofit2.http.*
 
 interface ProdutoService {
 
-    @GET("/android/rest/produto")
+    @GET("/api/produto")
     fun listar(): Call<List<Produto>>
 
-    @GET("/android/rest/produto/{nome}")
+    @GET("/api/produto/{produto}")
     //Parâmetro de URL
-    fun pesquisar(@Path("nome") nome: String): Call<List<Produto>>
+    fun pesquisar(@Path("produto") produto: String): Call<List<Produto>>
 
-    @GET("/android/rest/produto")
+    @GET("/api/produto")
     //Parâmetro de consulta (query)
-    fun pesquisar2(@Query("nome") nome: String): Call<List<Produto>>
+    fun pesquisar2(@Query("produto") produto: String): Call<List<Produto>>
 
-    @POST("/android/rest/produto")
+    @POST("/api/produto")
     fun inserir(@Body produto: Produto): Call<Produto>
 
-    @PUT("/android/rest/produto")
+    @PUT("/api/produto")
     fun atualizar(@Body produto: Produto): Call<Produto>
 
-    @DELETE("/android/rest/produto")
+    @DELETE("/api/produto")
     fun excluir(@Query("id") id: Int): Call<Produto>
 
 }

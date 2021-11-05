@@ -19,7 +19,7 @@
         <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/layout/fragment_dados_cadastrais.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Dezena/Documents/GitHub/AcaiApp/PI4Acai/app/src/main/res/layout/fragment_k.xml" value="0.20520833333333333" />
         <entry key="app/src/main/res/drawable/home.xml" value="0.3302083333333333" />
-        <entry key="app/src/main/res/layout/activity_bottom_navigation.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_bottom_navigation.xml" value="0.29085872576177285" />
         <entry key="app/src/main/res/layout/activity_categorias.xml" value="0.14209726443768997" />
         <entry key="app/src/main/res/layout/activity_criar_conta.xml" value="0.14209726443768997" />
         <entry key="app/src/main/res/layout/activity_esqueceu_senha.xml" value="0.335" />
@@ -28,8 +28,10 @@
         <entry key="app/src/main/res/layout/card_cell.xml" value="0.29528985507246375" />
         <entry key="app/src/main/res/layout/card_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/card_item_placeholder.xml" value="0.24728260869565216" />
+        <entry key="app/src/main/res/layout/card_produtos_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_alterar_dados.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3125925925925926" />
+        <entry key="app/src/main/res/layout/fragment_tela_produtos.xml" value="0.2033514492753623" />
         <entry key="app/src/main/res/menu/bottomnav.xml" value="0.20277777777777778" />
         <entry key="app/src/main/res/menu/menu_scrolling.xml" value="0.2111111111111111" />
       </map>

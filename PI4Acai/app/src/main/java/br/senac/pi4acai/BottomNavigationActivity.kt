@@ -2,8 +2,6 @@ package br.senac.pi4acai
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
 import br.senac.pi4acai.databinding.ActivityBottomNavigationBinding
@@ -14,6 +12,7 @@ class BottomNavigationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBottomNavigationBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
 
         binding.collapsingToolbar.title = ""
@@ -28,11 +27,12 @@ class BottomNavigationActivity : AppCompatActivity() {
                 R.id.perfil ->{
                     binding.appbar.visibility = View.GONE
                     frag = AlterarDadosFragment.newInstance()
-                    supportFragmentManager.beginTransaction().replace(R.id.container, frag).commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.containerProdutos, frag).commit()
                 }
                 R.id.home ->{
-                    frag = HomeFragment.newInstance()
-                    supportFragmentManager.beginTransaction().replace(R.id.container, frag).commit()
+                    binding.appbar.visibility = View.VISIBLE
+                    frag = TelaProdutosFragment.newInstance()
+                    supportFragmentManager.beginTransaction().replace(R.id.containerProdutos, frag).commit()
                 }
             }
 

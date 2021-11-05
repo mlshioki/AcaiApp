@@ -1,12 +1,9 @@
 package br.senac.pi4acai.models
 
 data class Produto(
-	val prodPreco: Double,
-	val prodAval: Int,
-	val prodNome: String,
-	val descontoPromo: Double,
-	val prodId: Int,
-	val prodDesc: String,
-	val prodVar: List<String>,
-	val prodAtivo: Boolean
+	val preco: Double,
+	val variacao: String,
+	val nome: String,
+	val id: Int,
+	val descricao: String
 )
