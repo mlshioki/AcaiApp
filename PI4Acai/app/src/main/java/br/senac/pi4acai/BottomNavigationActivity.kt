@@ -27,13 +27,18 @@ class BottomNavigationActivity : AppCompatActivity() {
                 R.id.perfil ->{
                     binding.appbar.visibility = View.GONE
                     frag = AlterarDadosFragment.newInstance()
-                    supportFragmentManager.beginTransaction().replace(R.id.containerProdutos, frag).commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.containerCategoria, frag).commit()
                 }
                 R.id.home ->{
                     binding.appbar.visibility = View.VISIBLE
                     frag = TelaProdutosFragment.newInstance()
-                    supportFragmentManager.beginTransaction().replace(R.id.containerProdutos, frag).commit()
-                }
+                    supportFragmentManager.beginTransaction().replace(R.id.containerCategoria, frag).commit()
+                }/*
+                R.id.carrinho ->{
+                    binding.appbar.visibility = View.VISIBLE
+                    frag = CarrinhoFragment.newInstance()
+                    supportFragmentManager.beginTransaction().replace(R.id.containerCategoria, frag).commit()
+                }*/
             }
 
             true
