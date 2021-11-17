@@ -73,6 +73,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
             cardBinding.editAcaiTitulo.text = it.nome
             cardBinding.editAcaiPreco.text = it.preco.toString()
+            cardBinding.ratingBar.rating = 3.5F
 
             bind.container1.addView(cardBinding.root)
         }

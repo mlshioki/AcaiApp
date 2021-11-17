@@ -68,10 +68,9 @@ class TelaProdutosFragment : Fragment() {
         bind.containerProdutos.removeAllViews()
 
         lista?.forEach{
-            val cardBinding = CardProdutosItemBinding.inflate(layoutInflater)
-
+            val cardBinding = CardProdutosItemBinding.inflate(layoutInflater, bind.containerProdutos, false)
             cardBinding.editProdNome.text = it.nome
-            cardBinding.editProdPreco.text = it.preco.toString()
+            cardBinding.editProdPreco.text = "R$" + it.preco.toString()
 
             bind.containerProdutos.addView(cardBinding.root)
         }

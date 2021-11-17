@@ -20,22 +20,22 @@ class BottomNavigationActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
+        var appBarHeight = binding.appbar.layoutParams.height
         var frag: Fragment = HomeFragment.newInstance()
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.perfil ->{
-                    binding.appbar.visibility = View.GONE
+                    binding.appbar.layoutParams.height = 0
                     frag = AlterarDadosFragment.newInstance()
                     supportFragmentManager.beginTransaction().replace(R.id.containerProdutos, frag).commit()
                 }
                 R.id.home ->{
-                    binding.appbar.visibility = View.VISIBLE
-                    frag = TelaProdutosFragment.newInstance()
+                    binding.appbar.layoutParams.height = appBarHeight
+                    frag = HomeFragment.newInstance()
                     supportFragmentManager.beginTransaction().replace(R.id.containerProdutos, frag).commit()
                 }
             }
-
             true
         }
     }
