@@ -7,7 +7,7 @@
     tools:context=".CategoriasFragment" >
 
     <LinearLayout
-        android:id="@+id/containerCategoria"
+        android:id="@+id/containerBN"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" />
