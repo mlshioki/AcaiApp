@@ -48,14 +48,14 @@ class TelaProdutosFragment : Fragment() {
                     val listaProdutos = response.body()
                     atualizarIU(listaProdutos)
                 } else{
-                    Snackbar.make(bind.containerProdutos, "Não é possível atualizar produtos", Snackbar.LENGTH_LONG).show()
+                    Snackbar.make(bind.containerBN, "Não é possível atualizar produtos", Snackbar.LENGTH_LONG).show()
 
                     Log.e("ERROR", response.errorBody().toString())
                 }
             }
 
             override fun onFailure(call: Call<List<Produto>>, t: Throwable) {
-                Snackbar.make(bind.containerProdutos, "Não é possível se conectar ao servidor", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(bind.containerBN, "Não é possível se conectar ao servidor", Snackbar.LENGTH_LONG).show()
 
                 Log.e("ERROR", "Falha ao executar serviço", t)
             }
@@ -65,14 +65,15 @@ class TelaProdutosFragment : Fragment() {
     }
 
     fun atualizarIU(lista: List<Produto>?){
-        bind.containerProdutos.removeAllViews()
+        bind.containerBN.removeAllViews()
 
         lista?.forEach{
-            val cardBinding = CardProdutosItemBinding.inflate(layoutInflater, bind.containerProdutos, false)
-            cardBinding.editProdNome.text = it.nome
-            cardBinding.editProdPreco.text = "R$" + it.preco.toString()
+            val cardBinding = CardProdutosItemBinding.inflate(layoutInflater, bind.containerBN, false)
 
-            bind.containerProdutos.addView(cardBinding.root)
+            cardBinding.editProdNome.text = it.name
+            cardBinding.editProdPreco.text = it.price.toString()
+
+            bind.containerBN.addView(cardBinding.root)
         }
     }
 

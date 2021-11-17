@@ -7,7 +7,7 @@ import retrofit2.http.*
 
 interface ProdutoService {
 
-    @GET("/api/produto")
+    @GET("/api/product")
     fun listar(): Call<List<Produto>>
 
     @GET("/api/produto/{produto}")

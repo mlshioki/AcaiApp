@@ -28,13 +28,21 @@ class BottomNavigationActivity : AppCompatActivity() {
                 R.id.perfil ->{
                     binding.appbar.layoutParams.height = 0
                     frag = AlterarDadosFragment.newInstance()
-                    supportFragmentManager.beginTransaction().replace(R.id.containerProdutos, frag).commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.containerBN, frag).commit()
                 }
                 R.id.home ->{
                     binding.appbar.layoutParams.height = appBarHeight
                     frag = HomeFragment.newInstance()
-                    supportFragmentManager.beginTransaction().replace(R.id.containerProdutos, frag).commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.containerBN, frag).commit()
+                    /*binding.appbar.visibility = View.VISIBLE
+                    frag = TelaProdutosFragment.newInstance()
+                    supportFragmentManager.beginTransaction().replace(R.id.containerBN, frag).commit()*/
                 }
+                /*R.id.carrinho ->{
+                    binding.appbar.visibility = View.VISIBLE
+                    frag = CarrinhoFragment.newInstance()
+                    supportFragmentManager.beginTransaction().replace(R.id.containerBN, frag).commit()
+                }*/
             }
             true
         }

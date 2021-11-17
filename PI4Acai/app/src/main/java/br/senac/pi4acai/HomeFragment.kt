@@ -71,8 +71,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         lista?.forEach{
             val cardBinding = CardItemBinding.inflate(layoutInflater)
 
-            cardBinding.editAcaiTitulo.text = it.nome
-            cardBinding.editAcaiPreco.text = it.preco.toString()
+            cardBinding.editAcaiTitulo.text = it.name
+            cardBinding.editAcaiPreco.text = it.price.toString()
             cardBinding.ratingBar.rating = 3.5F
 
             bind.container1.addView(cardBinding.root)

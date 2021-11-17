@@ -88,14 +88,11 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-
         android:layout_marginBottom="56dp"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         tools:ignore="SpeakableTextPresentCheck">
-
         <FrameLayout
-            android:id="@+id/containerProdutos"
+            android:id="@+id/containerBN"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
