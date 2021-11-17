@@ -38,11 +38,11 @@ class BottomNavigationActivity : AppCompatActivity() {
                     frag = TelaProdutosFragment.newInstance()
                     supportFragmentManager.beginTransaction().replace(R.id.containerBN, frag).commit()*/
                 }
-                /*R.id.carrinho ->{
-                    binding.appbar.visibility = View.VISIBLE
+                R.id.carrinho ->{
+                    binding.appbar.layoutParams.height = appBarHeight
                     frag = CarrinhoFragment.newInstance()
                     supportFragmentManager.beginTransaction().replace(R.id.containerBN, frag).commit()
-                }*/
+                }
             }
             true
         }
