@@ -27,8 +27,8 @@ class TelaProdutosFragment : Fragment() {
         bind = FragmentTelaProdutosBinding.inflate(inflater)
 
         atualizarProdutos()
-
         return bind.root
+
     }
 
     fun atualizarProdutos(){
@@ -74,6 +74,7 @@ class TelaProdutosFragment : Fragment() {
             cardBinding.editProdPreco.text = it.price.toString()
 
             bind.containerBN.addView(cardBinding.root)
+
         }
     }
 

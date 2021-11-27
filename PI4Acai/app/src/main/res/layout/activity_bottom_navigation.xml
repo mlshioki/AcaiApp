@@ -68,7 +68,7 @@
             </LinearLayout>
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/etCep"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_gravity="bottom|center_horizontal"
@@ -78,9 +78,10 @@
                 android:background="@drawable/rounded_corner_view"
                 android:ems="10"
                 android:hint="Pesquisar produto"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:minHeight="48dp"
                 android:paddingStart="8dp"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>

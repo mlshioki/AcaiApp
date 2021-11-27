@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import br.senac.pi4acai.databinding.CardItemBinding
 import br.senac.pi4acai.databinding.FragmentHomeBinding
 import br.senac.pi4acai.models.Produto
+import br.senac.pi4acai.models.RespostaCarrinho
+import br.senac.pi4acai.services.CarrinhoService
 import br.senac.pi4acai.services.ProdutoService
 import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
@@ -50,8 +53,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     atualizarIU(listaProdutos)
                 } else{
                     Snackbar.make(bind.container1, "Não é possível atualizar produtos", Snackbar.LENGTH_LONG).show()
-
-                    Log.e("ERROR", response.errorBody().toString())
+                    response.errorBody()?.let {
+                        Log.e("ERROR", it.string())
+                    }
                 }
             }
 
@@ -72,11 +76,50 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             val cardBinding = CardItemBinding.inflate(layoutInflater)
 
             cardBinding.editAcaiTitulo.text = it.name
-            cardBinding.editAcaiPreco.text = it.price.toString()
+            cardBinding.editAcaiPreco.text = "R$" + it.price.toString()
             cardBinding.ratingBar.rating = 3.5F
+            cardBinding.comprarBtn.setOnClickListener { view->
+                addProdutoCarrinho(it.id)
+            }
 
             bind.container1.addView(cardBinding.root)
+
         }
+    }
+
+
+
+    fun addProdutoCarrinho(id: Int){
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://10.0.2.2:8000")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val service = retrofit.create(CarrinhoService::class.java)
+
+        val call = service.addProduto(id)
+
+        val callback = object : Callback<RespostaCarrinho>{
+            override fun onResponse(call: Call<RespostaCarrinho>, response: Response<RespostaCarrinho>) {
+                if(response.isSuccessful){
+                    //val success = response.body()
+                    //Toast.makeText(this, success.message)
+                } else{
+                    Snackbar.make(bind.container1, "Não é possível atualizar produtos", Snackbar.LENGTH_LONG).show()
+                    response.errorBody()?.let {
+                        Log.e("ERROR", it.string())
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<RespostaCarrinho>, t: Throwable) {
+                Snackbar.make(bind.container1, "Não é possível se conectar ao servidor", Snackbar.LENGTH_LONG).show()
+
+                Log.e("ERROR", "Falha ao executar serviço", t)
+            }
+        }
+
+        call.enqueue(callback)
     }
 
     companion object {

@@ -6,25 +6,29 @@ import retrofit2.http.*
 
 
 interface ProdutoService {
-
+    @Headers("Authorization: Bearer 1|un6tFYvtuCaiQYUz1WpwzgaBpVVCAgpJaUgGVEWS")
     @GET("/api/product")
     fun listar(): Call<List<Produto>>
+/*
+    @Headers("Authorization: Bearer 1|un6tFYvtuCaiQYUz1WpwzgaBpVVCAgpJaUgGVEWS")
+    @GET("/api/carrinho/{product}")
+    fun listarCarrinho(): Call<List<Produto>>
 
-    @GET("/api/produto/{produto}")
+    @GET("/api/produto/{product}")
     //Parâmetro de URL
-    fun pesquisar(@Path("produto") produto: String): Call<List<Produto>>
+    fun pesquisar(@Path("product") produto: String): Call<List<Produto>>
 
-    @GET("/api/produto")
+    @GET("/api/product")
     //Parâmetro de consulta (query)
     fun pesquisar2(@Query("produto") produto: String): Call<List<Produto>>
 
-    @POST("/api/produto")
+    @POST("/api/product")
     fun inserir(@Body produto: Produto): Call<Produto>
 
-    @PUT("/api/produto")
+    @PUT("/api/product")
     fun atualizar(@Body produto: Produto): Call<Produto>
 
-    @DELETE("/api/produto")
-    fun excluir(@Query("id") id: Int): Call<Produto>
+    @DELETE("/api/product")
+    fun excluir(@Query("id") id: Int): Call<Produto>*/
 
 }

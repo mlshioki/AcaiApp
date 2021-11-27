@@ -2,25 +2,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.senac.pi4acai">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DesignDemo">
+        android:theme="@style/Theme.DesignDemo"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".QrCodeActivity"
+            android:exported="true" />
         <activity
             android:name=".BottomNavigationActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".CategoriasActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,5 +43,5 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET"/>
+
 </manifest>

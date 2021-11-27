@@ -36,16 +36,18 @@
         app:layout_constraintTop_toBottomOf="@+id/loginTextView">
 
         <EditText
-            android:drawableLeft="@drawable/email_icon"
             android:id="@+id/editEmail"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_weight="1"
             android:background="@drawable/rounded_corner_view"
+            android:drawableLeft="@drawable/email_icon"
             android:ems="10"
-            android:padding="10dp"
             android:hint="E-mail"
-            android:inputType="textWebEmailAddress|textEmailSubject" />
+            android:inputType="textWebEmailAddress|textEmailSubject"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
     </LinearLayout>
 
     <LinearLayout
@@ -71,8 +73,10 @@
 
             android:ems="10"
             android:hint="Senha"
+            android:inputType="textPersonName"
             android:padding="10dp"
-            android:inputType="textPersonName" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
     </LinearLayout>
 
     <TextView

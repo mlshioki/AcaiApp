@@ -7,7 +7,7 @@
     android:foregroundTint="#000000"
     tools:context=".HomeFragment">
 
-    <ScrollView
+    <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:ignore="SpeakableTextPresentCheck">
@@ -15,8 +15,8 @@
         <LinearLayout
             android:id="@+id/container1"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="300dp"
             android:orientation="horizontal" />
-    </ScrollView>
+    </HorizontalScrollView>
 
 </FrameLayout>

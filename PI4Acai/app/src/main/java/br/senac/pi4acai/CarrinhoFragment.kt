@@ -8,7 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import br.senac.pi4acai.databinding.CardCarrinhoBinding
 import br.senac.pi4acai.databinding.FragmentCarrinhoBinding
+import br.senac.pi4acai.models.Carrinho
 import br.senac.pi4acai.models.Produto
+import br.senac.pi4acai.models.RespostaCarrinho
+import br.senac.pi4acai.models.RespostaProduto
+import br.senac.pi4acai.services.CarrinhoService
 import br.senac.pi4acai.services.ProdutoService
 import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
@@ -27,7 +31,10 @@ class CarrinhoFragment : Fragment(R.layout.fragment_carrinho) {
         binding = FragmentCarrinhoBinding.inflate(inflater)
         //atualizarProdutos()
         return binding.root
+
     }
+
+
     fun atualizarProdutosCarrinho(){
         //obter instancia
         val retrofit = Retrofit.Builder()
@@ -35,14 +42,14 @@ class CarrinhoFragment : Fragment(R.layout.fragment_carrinho) {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val service = retrofit.create(ProdutoService::class.java)
-        val call = service.listar()
+        val service = retrofit.create(CarrinhoService::class.java)
+        val call = service.listarCarrinho()
 
-        val callback = object : Callback<List<Produto>> {
-            override fun onResponse(call: Call<List<Produto>>, response: Response<List<Produto>>) {
+        val callback = object : Callback<RespostaProduto>{
+            override fun onResponse(call: Call<RespostaProduto>, response: Response<RespostaProduto>) {
                 if (response.isSuccessful){
-                    val listarCarrinho = response.body()
-                    atualizarUI(listarCarrinho)
+                    val carrinho = response.body()
+                    atualizarUI(carrinho)
                 }else{
                     //val error = response.errorBody().toString()
                     Snackbar.make(binding.containerCarrinho, "Não deu certo", Snackbar.LENGTH_LONG).show()
@@ -50,7 +57,7 @@ class CarrinhoFragment : Fragment(R.layout.fragment_carrinho) {
                 }
             }
 
-            override fun onFailure(call: Call<List<Produto>>, t: Throwable) {
+            override fun onFailure(call: Call<RespostaProduto>, t: Throwable) {
                 Snackbar.make(binding.containerCarrinho, "Deu ruim ", Snackbar.LENGTH_LONG).show()
                 Log.e("ERROR","Falha ao executar o serviço", t)
             }
@@ -63,12 +70,16 @@ class CarrinhoFragment : Fragment(R.layout.fragment_carrinho) {
 
         atualizarProdutosCarrinho()
     }
-    fun atualizarUI(lista : List<Produto>?){
+    fun atualizarUI(carrinho: RespostaProduto?){
         binding.containerCarrinho.removeAllViews()
-        lista?.forEach {
+        carrinho?.data?.carrinho?.forEach {
             val cardCarrinhoBinding = CardCarrinhoBinding.inflate(layoutInflater)
             cardCarrinhoBinding.textTitulo.text = it.name
-            cardCarrinhoBinding.textDesc.text = it.description
+            cardCarrinhoBinding.textPrice.text = "R$" + it.price
+            cardCarrinhoBinding.textQuantidadeProduto.text =it.cart_qtd.toString()
+            cardCarrinhoBinding.imageLixeira.setOnClickListener {
+
+            }
 
             binding.containerCarrinho.addView(cardCarrinhoBinding.root)
         }
