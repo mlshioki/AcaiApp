@@ -24,7 +24,7 @@
             app:cardCornerRadius="100dp">
 
             <ImageView
-                android:id="@+id/imagemCarrinho"
+                android:id="@+id/imgProdutoHist"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#673AB7"
