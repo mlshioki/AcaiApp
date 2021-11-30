@@ -14,6 +14,7 @@ import br.senac.pi4acai.models.RespostaCarrinho
 import br.senac.pi4acai.services.CarrinhoService
 import br.senac.pi4acai.services.ProdutoService
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -77,12 +78,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
             cardBinding.editAcaiTitulo.text = it.name
             cardBinding.editAcaiPreco.text = "R$" + it.price.toString()
-            cardBinding.ratingBar.rating = 3.5F
+            cardBinding.imgAcai
+            cardBinding.ratingBar.rating = 5F
             cardBinding.comprarBtn.setOnClickListener {
                     view->
                 addProdutoCarrinho(it.id)
             }
-
+            //Picasso.get().load("https://i.imgur.com/wcNZsqi.jpg").into(cardBinding.imgAcai)
             bind.container1.addView(cardBinding.root)
 
         }
@@ -102,7 +104,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             override fun onResponse(call: Call<RespostaCarrinho>, response: Response<RespostaCarrinho>) {
                 if(response.isSuccessful){
                     //val success = response.body()
-                    //Toast.makeText(this, success.message)
+                    Toast.makeText(context, "Produto adicionado ao carrinho", Toast.LENGTH_LONG).show()
                 } else{
                     Snackbar.make(bind.container1, "Não é possível atualizar produtos", Snackbar.LENGTH_LONG).show()
                     response.errorBody()?.let {

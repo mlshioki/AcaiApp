@@ -2,7 +2,6 @@ package br.senac.pi4acai
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.Fragment
 import br.senac.pi4acai.databinding.ActivityBottomNavigationBinding
 
