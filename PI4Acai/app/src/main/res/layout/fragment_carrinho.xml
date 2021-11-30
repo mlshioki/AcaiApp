@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:foregroundTint="@color/pinkpurple"
     android:orientation="vertical"
-    tools:context=".CarrinhoFragment" >
+    tools:context=".CarrinhoFragment">
 
     <LinearLayout
         android:id="@+id/containerCarrinho"
@@ -18,6 +19,8 @@
     <Button
         android:id="@+id/button3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_height="56dp"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/pinkpurple"
+        android:text="Finalizar pedido" />
 </LinearLayout>
