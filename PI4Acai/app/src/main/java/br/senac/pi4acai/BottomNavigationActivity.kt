@@ -12,16 +12,18 @@ class BottomNavigationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBottomNavigationBinding.inflate(layoutInflater)
-
+        var frag: Fragment = HomeFragment.newInstance()
+        supportFragmentManager.beginTransaction().replace(R.id.containerBN, frag).commit()
         setContentView(binding.root)
 
         binding.collapsingToolbar.title = ""
         binding.toolbar.title = ""
 
+
         setSupportActionBar(binding.toolbar)
 
         var appBarHeight = binding.appbar.layoutParams.height
-        var frag: Fragment = HomeFragment.newInstance()
+
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
@@ -41,6 +43,11 @@ class BottomNavigationActivity : AppCompatActivity() {
                 R.id.carrinho ->{
                     binding.appbar.layoutParams.height = appBarHeight
                     frag = CarrinhoFragment.newInstance()
+                    supportFragmentManager.beginTransaction().replace(R.id.containerBN, frag).commit()
+                }
+                R.id.historico ->{
+                    binding.appbar.layoutParams.height = appBarHeight
+                    frag = HistoricoFragment.newInstance()
                     supportFragmentManager.beginTransaction().replace(R.id.containerBN, frag).commit()
                 }
             }

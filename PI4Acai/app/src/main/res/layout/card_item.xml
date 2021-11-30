@@ -34,17 +34,21 @@
 
         <RatingBar
             android:id="@+id/ratingBar"
-            style="?android:attr/ratingBarStyleIndicator"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@android:style/Widget.DeviceDefault.Light.RatingBar.Indicator"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
             android:layout_weight="1"
+            android:isIndicator="true"
             android:max="5"
             android:numStars="5"
             android:progressTint="@color/yellow"
-            android:scaleX="0.7"
+            android:rating="5"
+            android:scaleX="0.8"
             android:scaleY="0.8"
             android:secondaryProgressTint="#FFEB3B"
-            android:stepSize="1"
+            android:stepSize="0.5"
+            android:transformPivotX="0dp"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView

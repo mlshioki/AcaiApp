@@ -78,7 +78,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             cardBinding.editAcaiTitulo.text = it.name
             cardBinding.editAcaiPreco.text = "R$" + it.price.toString()
             cardBinding.ratingBar.rating = 3.5F
-            cardBinding.comprarBtn.setOnClickListener { view->
+            cardBinding.comprarBtn.setOnClickListener {
+                    view->
                 addProdutoCarrinho(it.id)
             }
 
@@ -86,8 +87,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         }
     }
-
-
 
     fun addProdutoCarrinho(id: Int){
         val retrofit = Retrofit.Builder()

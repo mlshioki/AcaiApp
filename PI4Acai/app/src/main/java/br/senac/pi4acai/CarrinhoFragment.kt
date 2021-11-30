@@ -15,6 +15,7 @@ import br.senac.pi4acai.models.RespostaProduto
 import br.senac.pi4acai.services.CarrinhoService
 import br.senac.pi4acai.services.ProdutoService
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -76,10 +77,11 @@ class CarrinhoFragment : Fragment(R.layout.fragment_carrinho) {
             val cardCarrinhoBinding = CardCarrinhoBinding.inflate(layoutInflater)
             cardCarrinhoBinding.textTitulo.text = it.name
             cardCarrinhoBinding.textPrice.text = "R$" + it.price
-            cardCarrinhoBinding.textQuantidadeProduto.text =it.cart_qtd.toString()
+            cardCarrinhoBinding.textQuantidadeProduto.text ="Qtd: " + it.cart_qtd.toString()
+            /*Picasso.get().load("https://imgur.com/wcNZsqi/${it.product_id}").into(cardCarrinhoBinding.imagemCarrinho)
             cardCarrinhoBinding.imageLixeira.setOnClickListener {
 
-            }
+            }*/
 
             binding.containerCarrinho.addView(cardCarrinhoBinding.root)
         }

@@ -7,11 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import br.senac.pi4acai.databinding.CardProdutosItemBinding
 import br.senac.pi4acai.databinding.FragmentTelaProdutosBinding
 import br.senac.pi4acai.models.Produto
 import br.senac.pi4acai.services.ProdutoService
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -47,6 +49,9 @@ class TelaProdutosFragment : Fragment() {
                 if(response.isSuccessful){
                     val listaProdutos = response.body()
                     atualizarIU(listaProdutos)
+                    Toast.makeText(getActivity(), "This is my Toast message!",
+                        Toast.LENGTH_LONG).show();
+                    //Toast.makeText(this@TelaProdutosFragment,"Produto adicionado ao carrinho",Toast.LENGTH_SHORT).show();
                 } else{
                     Snackbar.make(bind.containerBN, "Não é possível atualizar produtos", Snackbar.LENGTH_LONG).show()
 
@@ -69,11 +74,13 @@ class TelaProdutosFragment : Fragment() {
 
         lista?.forEach{
             val cardBinding = CardProdutosItemBinding.inflate(layoutInflater, bind.containerBN, false)
-
             cardBinding.editProdNome.text = it.name
             cardBinding.editProdPreco.text = it.price.toString()
 
+            //Picasso.get().load("https://imgur.com/a/DKDrm1A/${it.id}").into(cardBinding.acaiImg)
+
             bind.containerBN.addView(cardBinding.root)
+
 
         }
     }
