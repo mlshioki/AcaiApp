@@ -27,23 +27,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/circulo"
+            <ImageView
+                android:id="@+id/imgProdutoHist"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="8dp"
-                android:layout_marginBottom="4dp"
-                app:cardCornerRadius="100dp">
-
-                <ImageView
-                    android:id="@+id/imgProdutoHist"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center_horizontal"
-                    android:backgroundTint="#673AB7"
-                    tools:src="@tools:sample/avatars" />
-            </androidx.cardview.widget.CardView>
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="#673AB7"
+                tools:src="@drawable/acai2" />
 
             <LinearLayout
                 android:layout_width="match_parent"

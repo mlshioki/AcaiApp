@@ -17,7 +17,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnFinalizarPedido"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_margin="16dp"

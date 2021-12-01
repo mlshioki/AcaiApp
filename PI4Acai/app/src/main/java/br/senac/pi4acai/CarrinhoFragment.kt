@@ -11,6 +11,7 @@ import br.senac.pi4acai.databinding.CardCarrinhoBinding
 import br.senac.pi4acai.databinding.FragmentCarrinhoBinding
 import br.senac.pi4acai.models.*
 import br.senac.pi4acai.services.CarrinhoService
+import br.senac.pi4acai.services.PedidosService
 import br.senac.pi4acai.services.ProdutoService
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
@@ -83,9 +84,44 @@ class CarrinhoFragment : Fragment(R.layout.fragment_carrinho) {
             //Picasso.get().load("https://i.imgur.com/wcNZsqi.jpg").into(cardCarrinhoBinding.imagemCarrinho)
             cardCarrinhoBinding.imageLixeira.setOnClickListener { view ->
                 excluirProduto(it.id)
+
+            }
+
+            binding.btnFinalizarPedido.setOnClickListener {
+                finalizarPedidos()
+                atualizarProdutosCarrinho()
             }
         }
     }
+
+    fun finalizarPedidos(){
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://10.0.2.2:8000")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val service = retrofit.create(PedidosService::class.java)
+        val call = service.finalizarPedido(Pedidos(endereco = "Rua a", forma_pagamento = "PIX", observacoes = "teste"))
+
+        val callback = object : Callback<RespostaPedido>{
+            override fun onResponse(call: Call<RespostaPedido>,response: Response<RespostaPedido>) {
+                if (response.isSuccessful){
+                    Toast.makeText(context,"Pedido finalizado, vá ao historico de compras para mais informações", Toast.LENGTH_LONG).show()
+                }else{
+                    Snackbar.make(binding.containerCarrinho, "Não deu certo", Snackbar.LENGTH_LONG).show()
+                    response.errorBody()?.let {
+                        Log.e("ERROR", it.string())
+                    }
+
+                }
+            }
+            override fun onFailure(call: Call<RespostaPedido>, t: Throwable) {
+                Snackbar.make(binding.containerCarrinho, "Deu ruim ", Snackbar.LENGTH_LONG).show()
+                Log.e("ERROR","Falha ao executar o serviço", t)
+            }
+        }
+        call.enqueue(callback)
+    }
+
     fun excluirProduto(id: Int){
         val retrofit = Retrofit.Builder()
             .baseUrl("http://10.0.2.2:8000")
