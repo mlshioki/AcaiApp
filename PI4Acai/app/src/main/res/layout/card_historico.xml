@@ -38,6 +38,8 @@
                         android:id="@+id/TextItens"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
                         android:lines="3"
                         android:singleLine="false"
                         android:text="TextItens" />
@@ -46,9 +48,10 @@
 
             <TextView
                 android:id="@+id/textTotal"
-                android:layout_width="130dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
+                android:layout_marginRight="16dp"
                 android:hint="Total : "
                 android:textAlignment="center"
                 android:textColor="@color/black"

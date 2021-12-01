@@ -15,7 +15,7 @@
         <ImageView
             android:id="@+id/acaiImg"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_marginLeft="32dp"
             android:layout_marginRight="16dp"
             android:layout_weight="1"
