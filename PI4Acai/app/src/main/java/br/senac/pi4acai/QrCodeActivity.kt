@@ -18,15 +18,15 @@ import com.google.zxing.BarcodeFormat
 class QrCodeActivity : AppCompatActivity() {
     lateinit var binding: ActivityQrCodeBinding
     lateinit var leitorQr: CodeScanner
-    var permissaoConcecida = false
+    var permissaoConcedida = false
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityQrCodeBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        verificarPermissaoCamera()
+        verificarPermissao()
 
     }
-    fun incializarLeitorQrCode(){
+    fun initLeitorQrCode(){
         leitorQr = CodeScanner(this, binding.scannerView)
         leitorQr.camera = CodeScanner.CAMERA_BACK
         leitorQr.formats = listOf(BarcodeFormat.QR_CODE)
@@ -44,7 +44,7 @@ class QrCodeActivity : AppCompatActivity() {
         }
         leitorQr.setErrorCallback {
             runOnUiThread {
-                mostrarToast(this, "nao foi possivel abrir a camera")
+                mostrarToast(this, "nao foi possivel abrir a câmera")
                 Log.e("QrCodeActivity","inicializarLeitorQrCode", it)
                 setResult(RESULT_CANCELED)
                 finish()
@@ -54,14 +54,13 @@ class QrCodeActivity : AppCompatActivity() {
 
     }
 
-    fun verificarPermissaoCamera(){
+    fun verificarPermissao(){
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
             != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), 1)
         }else{
-            permissaoConcecida = true
-            incializarLeitorQrCode()
-
+            permissaoConcedida = true
+            initLeitorQrCode()
         }
     }
 
@@ -70,11 +69,11 @@ class QrCodeActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 1){
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                permissaoConcecida = true
-                incializarLeitorQrCode()
+                permissaoConcedida = true
+                initLeitorQrCode()
             }else{
-                permissaoConcecida = false
-                mostrarToast(this,"Sem permissao de uso de camera")
+                permissaoConcedida = false
+                mostrarToast(this,"É necessário permitir o uso da câmera para utilizar a função de QRCode.")
                 setResult(RESULT_CANCELED)
                 finish()
             }
