@@ -49,9 +49,19 @@ class API(private val context: Context) {
             return retrofitAberto.create(LoginService::class.java)
         }
 
-    val cliente: ClienteService
+    val produto: ProdutoService
+        get(){
+            return retrofitSeguro.create(ProdutoService::class.java)
+        }
+
+    val carrinho: CarrinhoService
+        get(){
+            return retrofitSeguro.create(CarrinhoService::class.java)
+        }
+
+    val pedidos: PedidosService
     get() {
-        return retrofitSeguro.create(ClienteService::class.java)
+        return retrofitSeguro.create(PedidosService::class.java)
     }
 
 }

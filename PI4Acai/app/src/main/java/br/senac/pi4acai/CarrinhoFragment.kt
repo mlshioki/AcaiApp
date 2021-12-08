@@ -10,6 +10,7 @@ import android.widget.Toast
 import br.senac.pi4acai.databinding.CardCarrinhoBinding
 import br.senac.pi4acai.databinding.FragmentCarrinhoBinding
 import br.senac.pi4acai.models.*
+import br.senac.pi4acai.services.API
 import br.senac.pi4acai.services.CarrinhoService
 import br.senac.pi4acai.services.PedidosService
 import br.senac.pi4acai.services.ProdutoService
@@ -36,16 +37,6 @@ class CarrinhoFragment : Fragment(R.layout.fragment_carrinho) {
 
 
     fun atualizarProdutosCarrinho(){
-        //obter instancia
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8000")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val service = retrofit.create(CarrinhoService::class.java)
-        val call = service.listarCarrinho()
-
-
         val callback = object : Callback<RespostaProduto>{
             override fun onResponse(call: Call<RespostaProduto>, response: Response<RespostaProduto>) {
                 if (response.isSuccessful){
@@ -62,7 +53,9 @@ class CarrinhoFragment : Fragment(R.layout.fragment_carrinho) {
                 Log.e("ERROR","Falha ao executar o serviço", t)
             }
         }
-        call.enqueue(callback)
+
+        API(requireContext()).carrinho.listarCarrinho().enqueue(callback)
+
     }
 
     override fun onResume() {
@@ -82,6 +75,7 @@ class CarrinhoFragment : Fragment(R.layout.fragment_carrinho) {
             cardCarrinhoBinding.textQuantidadeProduto.text ="Qtd: " + it.cart_qtd.toString()
             binding.containerCarrinho.addView(cardCarrinhoBinding.root)
             //Picasso.get().load("https://i.imgur.com/wcNZsqi.jpg").into(cardCarrinhoBinding.imagemCarrinho)
+
             cardCarrinhoBinding.imageLixeira.setOnClickListener { view ->
                 excluirProduto(it.id)
 
@@ -95,13 +89,6 @@ class CarrinhoFragment : Fragment(R.layout.fragment_carrinho) {
     }
 
     fun finalizarPedidos(){
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8000")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        val service = retrofit.create(PedidosService::class.java)
-        val call = service.finalizarPedido(Pedidos(endereco = "Rua a", forma_pagamento = "PIX", observacoes = "teste"))
-
         val callback = object : Callback<RespostaPedido>{
             override fun onResponse(call: Call<RespostaPedido>,response: Response<RespostaPedido>) {
                 if (response.isSuccessful){
@@ -119,17 +106,12 @@ class CarrinhoFragment : Fragment(R.layout.fragment_carrinho) {
                 Log.e("ERROR","Falha ao executar o serviço", t)
             }
         }
-        call.enqueue(callback)
+
+
+        API(requireContext()).pedidos.finalizarPedido(Pedidos(endereco = "Rua a", forma_pagamento = "PIX", observacoes = "teste")).enqueue(callback)
     }
 
     fun excluirProduto(id: Int){
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8000")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        val service = retrofit.create(CarrinhoService::class.java)
-        val call = service.excluirProdutoCarrinho(id)
-
         val callback = object : Callback<RespostaExclusao>{
             override fun onResponse(call: Call<RespostaExclusao>,response: Response<RespostaExclusao>) {
                 if (response.isSuccessful){
@@ -148,7 +130,8 @@ class CarrinhoFragment : Fragment(R.layout.fragment_carrinho) {
                 Log.e("ERROR","Falha ao executar o serviço", t)
             }
         }
-        call.enqueue(callback)
+
+        API(requireContext()).carrinho.excluirProdutoCarrinho(id).enqueue(callback)
     }
     companion object {
         @JvmStatic

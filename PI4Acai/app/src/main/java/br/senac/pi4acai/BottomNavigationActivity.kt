@@ -1,5 +1,6 @@
 package br.senac.pi4acai
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -26,11 +27,12 @@ class BottomNavigationActivity : AppCompatActivity() {
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.perfil ->{
+                R.id.qrcode ->{
                     binding.appbar.layoutParams.height = 0
-                    frag = AlterarDadosFragment.newInstance()
-                    supportFragmentManager.beginTransaction().replace(R.id.containerBN, frag).commit()
+                    val i = Intent(this, QrCodeActivity::class.java)
+                        startActivityForResult(i, 1)
                 }
+
                 R.id.home ->{
                     binding.appbar.layoutParams.height = appBarHeight
                     frag = HomeFragment.newInstance()

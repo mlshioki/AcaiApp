@@ -1,9 +1,11 @@
 package br.senac.pi4acai
 
+import android.app.Activity
+
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
-import androidx.appcompat.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +13,9 @@ import android.widget.Toast
 import br.senac.pi4acai.databinding.CardProdutosItemBinding
 import br.senac.pi4acai.databinding.FragmentTelaProdutosBinding
 import br.senac.pi4acai.models.Produto
+import br.senac.pi4acai.services.API
 import br.senac.pi4acai.services.ProdutoService
 import com.google.android.material.snackbar.Snackbar
-import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -84,6 +86,10 @@ class TelaProdutosFragment : Fragment() {
 
         }
     }
+
+
+
+
 
     companion object {
         @JvmStatic

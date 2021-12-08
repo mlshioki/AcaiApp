@@ -6,9 +6,12 @@ import retrofit2.http.*
 
 
 interface ProdutoService {
-    @Headers("Authorization: Bearer 1|un6tFYvtuCaiQYUz1WpwzgaBpVVCAgpJaUgGVEWS")
     @GET("/api/product")
     fun listar(): Call<List<Produto>>
+
+    @Headers("Authorization: Bearer 1|un6tFYvtuCaiQYUz1WpwzgaBpVVCAgpJaUgGVEWS")
+    @GET("/api/product/{id}")
+    fun obter(@Path("id")id : Int): Call<List<Produto>>
 /*
     @Headers("Authorization: Bearer 1|un6tFYvtuCaiQYUz1WpwzgaBpVVCAgpJaUgGVEWS")
     @GET("/api/carrinho/{product}")

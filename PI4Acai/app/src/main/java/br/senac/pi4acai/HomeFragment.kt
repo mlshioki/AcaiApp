@@ -1,16 +1,19 @@
 package br.senac.pi4acai
 
+import android.app.Activity.RESULT_OK
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import br.senac.pi4acai.databinding.CardItemBinding
 import br.senac.pi4acai.databinding.FragmentHomeBinding
 import br.senac.pi4acai.models.Produto
 import br.senac.pi4acai.models.RespostaCarrinho
+import br.senac.pi4acai.models.login
+import br.senac.pi4acai.services.API
 import br.senac.pi4acai.services.CarrinhoService
 import br.senac.pi4acai.services.ProdutoService
 import com.google.android.material.snackbar.Snackbar
@@ -37,16 +40,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     fun atualizarProdutos(){
-        //Obter instância do Retrofit
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8000")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val service = retrofit.create(ProdutoService::class.java)
-
-        val call = service.listar()
-
         val callback = object : Callback<List<Produto>>{
             override fun onResponse(call: Call<List<Produto>>, response: Response<List<Produto>>) {
                 if(response.isSuccessful){
@@ -67,7 +60,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
         }
 
-        call.enqueue(callback)
+        API(requireContext()).produto.listar().enqueue(callback)
     }
 
     fun atualizarIU(lista: List<Produto>?){
@@ -91,14 +84,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     fun addProdutoCarrinho(id: Int){
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8000")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
 
-        val service = retrofit.create(CarrinhoService::class.java)
-
-        val call = service.addProduto(id)
 
         val callback = object : Callback<RespostaCarrinho>{
             override fun onResponse(call: Call<RespostaCarrinho>, response: Response<RespostaCarrinho>) {
@@ -120,8 +106,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
         }
 
-        call.enqueue(callback)
+        API(requireContext()).carrinho.addProduto(id).enqueue(callback)
+
     }
+
+
 
     companion object {
         @JvmStatic

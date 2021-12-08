@@ -2,6 +2,7 @@ package br.senac.pi4acai.services
 
 import android.content.Context
 import br.senac.pi4acai.models.Token
+import br.senac.pi4acai.models.login
 import okhttp3.*
 
 const val ARQUIVO_LOGIN = "login"
@@ -15,7 +16,7 @@ class AutenticadorToken(private val context:Context): Interceptor, Authenticator
 
         var request = chain.request()
 
-        request = request?.newBuilder()?.addHeader("token", token)?.build()
+        request = request?.newBuilder()?.addHeader("Authorization", "Bearer " + token)?.build()
 
         return chain.proceed(request)
     }
@@ -28,18 +29,18 @@ class AutenticadorToken(private val context:Context): Interceptor, Authenticator
         val password = prefs.getString("senha", "") as String
 
 
-        val respostaRetrofit = API(context).login.fazerLogin(usuario, password).execute()
+        val respostaRetrofit = API(context).login.fazerLogin(login(usuario, password)).execute()
 
         var token = respostaRetrofit.body()
         if(respostaRetrofit.isSuccessful && token != null){
 
             val editor = prefs.edit()
 
-            editor.putString("token", token.token)
+            editor.putString("token", token.Token)
 
             editor.apply()
 
-            return response?.request()?.newBuilder()?.header("token", token.token)?.build()
+            return response?.request()?.newBuilder()?.header("Authorization", "Bearer " +  token.Token)?.build()
         }
     return null
     }

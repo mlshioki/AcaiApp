@@ -14,6 +14,7 @@ import br.senac.pi4acai.databinding.FragmentHistoricoBinding
 import br.senac.pi4acai.models.ListaPedidos
 import br.senac.pi4acai.models.ListaPedidosMessage
 import br.senac.pi4acai.models.Pedidos
+import br.senac.pi4acai.services.API
 import br.senac.pi4acai.services.PedidosService
 import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
@@ -39,16 +40,6 @@ class HistoricoFragment : Fragment(R.layout.fragment_historico) {
 
 
     fun listarPedidos(){
-        val retrofit = Retrofit.Builder()
-            //porta do simulador: 10.0.2.2
-            .baseUrl("http://10.0.2.2:8000")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        val service = retrofit.create(PedidosService::class.java)
-        val call = service.listarPedidos()
-
-
-
         val callback = object : Callback<ListaPedidos> {
             override fun onResponse(call: Call<ListaPedidos>, response: Response<ListaPedidos>) {
                 if(response.isSuccessful){
@@ -65,7 +56,7 @@ class HistoricoFragment : Fragment(R.layout.fragment_historico) {
             }
         }
 
-        call.enqueue(callback)
+        API(requireContext()).pedidos.listarPedidos().enqueue(callback)
     }
 
 
